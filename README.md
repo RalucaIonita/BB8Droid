@@ -1,10 +1,12 @@
 BB8 Arduino Droid
+===============
 
 	Final project for "Introduction to Robotics" course.
 	
-##Components used
+Components used
+---------
 
-###Hardware
+Hardware
 
 * Arduino Uno
 * 2 breadboards
@@ -22,27 +24,34 @@ BB8 Arduino Droid
 * wires
 * 3D printed components
 	
-###Software
+Software
 
 + Arduino IDE
 + Arduino Remote LITE (for Android)
 + Notepad++
 
-##Project
+Project
+
 	This project contains three files:
-	* main.ino
-	* MotorFunctions.hpp
-	* MP3Functions.hpp
+	
+* main.ino
+* MotorFunctions.hpp
+* MP3Functions.hpp
 
 3D models:
+
 https://www.thingiverse.com/thing:2749613
 
 Video:
+
 https://drive.google.com/open?id=1f8jVG8F9Zs2XQL68XOo8F8eO26Ej4e3Z
 
 Sounds:
+
 https://github.com/RalucaIonita/BB8Droid/issues/1
+
 https://github.com/RalucaIonita/BB8Droid/issues/2
 
 Button arrangement on Arduino Remote Lite:
+
 https://github.com/RalucaIonita/BB8Droid/issues/3
