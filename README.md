@@ -1,10 +1,10 @@
-#BB8 Arduino Droid#
+BB8 Arduino Droid
 
 	Final project for "Introduction to Robotics" course.
 	
-##Components used##
+##Components used
 
-###Hardware###
+###Hardware
 
 * Arduino Uno
 * 2 breadboards
@@ -22,11 +22,17 @@
 * wires
 * 3D printed components
 	
-###Software###
+###Software
 
 + Arduino IDE
 + Arduino Remote LITE (for Android)
 + Notepad++
+
+##Project
+	This project contains three files:
+	* main.ino
+	* MotorFunctions.hpp
+	* MP3Functions.hpp
 
 3D models:
 https://www.thingiverse.com/thing:2749613
