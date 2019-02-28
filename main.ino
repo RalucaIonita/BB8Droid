@@ -1,8 +1,17 @@
-#include "Functions.hpp"
+#include "MotorFunctions.hpp"
+#include "MMP3Functions.hpp"
+#include "SoftwareSerial.h"
+#include "DFRobotDFPlayerMini.h"
+
+SoftwareSerial mySoftwareSerial(RX_SERIAL, TX_SERIAL);
+DFRobotDFPlayerMini myDFPlayer;
 
 char command;
 
-void setup() {
+void setup()
+{
+
+ mySoftwareSerial.begin(9600);
   
   Serial.begin (9600);
   
@@ -14,63 +23,70 @@ void setup() {
   pinMode (ENABLE_RIGHT, OUTPUT);
   pinMode (MOTOR_POSITIVE_RIGHT, OUTPUT);
   pinMode (MOTOR_NEGATIVE_RIGHT, OUTPUT);  
+
+  //Checking for available mp3
+  if (!myDFPlayer.begin(mySoftwareSerial))
+  {
+    //Use softwareSerial to communicate with mp3.
+    Serial.println(F("Unable to begin:"));
+    Serial.println(F("1.Please recheck the connection!"));
+    Serial.println(F("2.Please insert the SD card!"));
+    while(true);
+  }
+  
+  Serial.println(F("DFPlayer Mini online."));
+
+  //Set mp3 player's volume
+  myDFPlayer.volume(MP3_MAX_VOLUME);
+
+  //Play a sound when booting
+  playRandomSound();
   
 }
  
-void loop() {
+void loop()
+{
+  //Reading the command
   if(Serial.available() > 0)
   {
-  command = Serial.read();
-  Serial.print(command);
+    command = Serial.read();
+    Serial.print(command);
   }
 
+  //Actioning according to the received command
+  
   if(command == 'F')
   {
-  digitalWrite (ENABLE_LEFT, HIGH);
-  digitalWrite (ENABLE_RIGHT, HIGH);
-
-  moveForward();
-  command = ' ';
+    moveForward();
   }
-
 
   if(command == 'B')
   {
-  digitalWrite (ENABLE_LEFT, HIGH);
-  digitalWrite (ENABLE_RIGHT, HIGH);
-
-  moveBackward();
-  command = ' ';
+    moveBackward();
   }
-
 
   if(command == 'L')
   {
-  digitalWrite (ENABLE_LEFT, HIGH);
-  digitalWrite (ENABLE_RIGHT, HIGH);
-
-  moveLeft();
-  command = ' ';
+    moveLeft();
   }
-
 
   if(command == 'R')
   {
-  digitalWrite (ENABLE_LEFT, HIGH);
-  digitalWrite (ENABLE_RIGHT, HIGH);
-
-  moveRight();
-  command = ' ';
+    moveRight();
   }
 
-  
   if(command == 'S')
   {
-  digitalWrite (ENABLE_LEFT, HIGH);
-  digitalWrite (ENABLE_RIGHT, HIGH);
-
-  stopMotors();
-  command = ' ';
+    stopMotors();
   }
 
+  if(command == '1')
+  {
+    playRandomSound();
+  }
+
+  if(command == '2')
+  {
+    playSoundtrack();
+  }
 }
